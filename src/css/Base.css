@@ -1,0 +1,29 @@
+@CHARSET "UTF-8";
+
+.hide {
+	display: none;
+}
+
+.newline {
+	height: 20px;
+}
+
+.textcenter {
+	TEXT-ALIGN: center;
+}
+
+.text-center {
+	text-align: center;
+}
+
+.fullwidth {
+	width: 100%;
+}
+
+.page-title {
+	text-align: center;
+	font-size: 20px;
+	color: #00F;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}

@@ -1,0 +1,34 @@
+{
+  "devDependencies": {
+    "babel-core": "^6.11.4",
+    "babel-loader": "^6.2.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "css-loader": "^0.25.0",
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7"
+  },
+  "name": "lark",
+  "version": "1.8.0",
+  "description": "百灵鸟系统前端页面",
+  "main": "index.js",
+  "dependencies": {
+    "babel-core": "^6.11.4",
+    "babel-loader": "^6.2.4",
+    "babel-polyfill": "^6.9.1",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.11.1",
+    "jquery": "^3.1.0",
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1",
+    "style-loader": "^0.13.1",
+    "url-loader": "^0.5.7"
+  },
+  "scripts": {
+    "start": "copy.bat"
+  },
+  "author": "刘湘湘",
+  "license": "ISC"
+}
