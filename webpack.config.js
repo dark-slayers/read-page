@@ -1,32 +1,54 @@
 var webpack = require("webpack");
+var path = require('path');
+const isDebug = true;
 var config = {
   entry: {
     vendor: ["jquery", "react", 'react-dom'],
-    // "/NodePage/test":"./NodeSrc/entry/test.entry.js",
-    // "NodePage/input/products/ProduceStart": "./NodeSrc/entry/input/products/ProduceStart.entry.js",
-    // "NodePage/input/products/AddProductionList": "./NodeSrc/entry/input/products/AddProductionList.entry.js",
-    // "/NodePage/mobile/ShowShipment":"./NodeSrc/entry/mobile/ShowShipment.entry.js",
-    // "/NodePage/Main": "./NodeSrc/entry/Main.entry.js",
+    "/target/test": "./src/entry/test.entry.js",
   },
   output: {
-    path: './',
+    path: path.resolve(__dirname, './'),
     filename: "[name].bundle.js",
   },
   plugins: [
-    new webpack.optimize.CommonsChunkPlugin(/* chunkName= */"vendor", /* filename= */"vendor.bundle.js")
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      filename: "/target/vendor.bundle.js"
+    })
   ],
   module: {
-    loaders: [{
+    rules: [{
       test: /\.jsx?$/,
       exclude: /node_modules/,
-      loader: 'babel',
-      query: {
-        presets: ['es2015', 'react']
-      }
+      use: [{
+        loader: 'babel-loader',
+        options: {
+          cacheDirectory: isDebug,
+          presets: [
+            ['es2015', {
+              modules: false
+            }],
+            ['stage-0'],
+            ['react']
+          ],
+          plugins: ['syntax-dynamic-import']
+        }
+      }]
     }, {
-       test: /\.css$/,
-       loader: "style-loader!css-loader"
-     }]
+      test: /\.css$/,
+      use: [{
+          loader: 'style-loader',
+          options: {
+            cacheDirectory: isDebug,
+          }
+        },{
+            loader: 'css-loader',
+            options: {
+              cacheDirectory: isDebug,
+            }
+          }
+      ]
+    }]
   }
 }
 module.exports = config;
