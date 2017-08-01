@@ -1,7 +1,7 @@
 import React from 'react';
 import $ from 'jquery';
 class ChapterButton extends React.Component {
-  handleClick=(index)=>{
+  handleClick = (index) => {
     this.props.call(index);
   }
   render() {
@@ -19,24 +19,39 @@ class ChapterButton extends React.Component {
     return (
       <div style={divStyle}>
         <span style={itemStyle}>
-          <span style={spanStyle} onClick={this.handleClick.bind(this, this.props.index-1)}>上一页</span>
+          <span style={spanStyle} onClick={this.handleClick.bind(this, this.props.index - 1)}>
+            <a href="javascript:;">上一页</a>
+          </span>
           <span style={spanStyle}>目录</span>
-          <span style={spanStyle} onClick={this.handleClick.bind(this, this.props.index+1)}>下一页</span>
+          <span style={spanStyle} onClick={this.handleClick.bind(this, this.props.index + 1)}>
+            <a href="javascript:;">下一页</a>
+          </span>
         </span>
       </div>
     );
   }
 }
 class Chapter extends React.Component {
-  handleCall=(index)=>{
-    alert('Chapter id : '+index);
+  constructor(props) {
+    super(props);
+    this.state = this.props;
+  }
+  handleCall = (index) => {
+    let newURL='/book/chapter/'+this.state.chapter.bookId+'/'+index;
+    let self=this;
+    $.get(newURL, {}, function(data){
+      self.setState({chapter:data});
+    });
   }
   render() {
-    return (
+    var rawHTML={
+           __html:this.state.chapter.content.replace(/\n/g, "<br />")
+       };
+    return (      
       <div>
-        <div>标题</div>
-        <div>正文</div>
-        <div><ChapterButton index={this.props.chapter.index} call={this.handleCall}/></div>
+        <div>{this.state.chapter.title}</div>
+        <div dangerouslySetInnerHTML={rawHTML}></div>
+        <div><ChapterButton index={this.state.chapter.index} call={this.handleCall}/></div>
       </div>
     );
   }
