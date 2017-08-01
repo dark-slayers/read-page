@@ -5,6 +5,7 @@ var config = {
   entry: {
     vendor: ["jquery", "react", 'react-dom'],
     "/target/test": "./src/entry/test.entry.js",
+    "/target/chapter": "./src/entry/chapter.entry.js",
   },
   output: {
     path: path.resolve(__dirname, './'),
