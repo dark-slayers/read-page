@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import RequestUrl from '../js/RequestUrl.js';
 class ChapterButton extends React.Component {
   handleClick = (index) => {
     this.props.call(index);
@@ -22,7 +23,7 @@ class ChapterButton extends React.Component {
           <span style={spanStyle} onClick={this.handleClick.bind(this, this.props.index - 1)}>
             <a href="javascript:;">上一页</a>
           </span>
-          <span style={spanStyle}>目录</span>
+          <span style={spanStyle}><a href="javascript:;">目录</a></span>
           <span style={spanStyle} onClick={this.handleClick.bind(this, this.props.index + 1)}>
             <a href="javascript:;">下一页</a>
           </span>
@@ -39,7 +40,7 @@ class Chapter extends React.Component {
   handleCall = (index) => {
     localStorage.bookId=this.state.chapter.bookId;
     localStorage.chapterIndex=index;
-    let newURL='/book/chapter/'+this.state.chapter.bookId+'/'+index;
+    let newURL=RequestUrl.chapter+this.state.chapter.bookId+'/'+index;
     let self=this;
     $.get(newURL, {}, function(data){
       self.setState({chapter:data});

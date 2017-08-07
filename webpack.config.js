@@ -1,11 +1,11 @@
 var webpack = require("webpack");
 var path = require('path');
-const isDebug = true;
 var config = {
   entry: {
     vendor: ["jquery", "react", 'react-dom'],
     "/target/test": "./src/entry/test.entry.js",
     "/target/chapter": "./src/entry/chapter.entry.js",
+    "/target/search_book": "./src/entry/search_book.entry.js",
   },
   output: {
     path: path.resolve(__dirname, './'),
@@ -24,7 +24,6 @@ var config = {
       use: [{
         loader: 'babel-loader',
         options: {
-          cacheDirectory: isDebug,
           presets: [
             ['es2015', {
               modules: false
@@ -40,12 +39,10 @@ var config = {
       use: [{
           loader: 'style-loader',
           options: {
-            cacheDirectory: isDebug,
           }
         },{
             loader: 'css-loader',
             options: {
-              cacheDirectory: isDebug,
             }
           }
       ]
