@@ -5,7 +5,16 @@ import Chapter from '../jsx/Chapter.jsx';
 import $ from 'jquery';
 ReactDOM.render(
   <DivTitle title="章节页面"/>, document.getElementById('page-title'));
-$.get('/book/chapter/1/10', {}, function(data){
+let bookId='1';
+let chapterIndex='1';
+if(localStorage.bookId){
+  bookId=localStorage.bookId;
+}
+if(localStorage.chapterIndex){
+  chapterIndex=localStorage.chapterIndex;
+}
+let url='/book/chapter/'+bookId+'/'+chapterIndex;
+$.get(url, {}, function(data){
   ReactDOM.render(
     <Chapter chapter={data}/>, document.getElementById('main-ui'));
 });

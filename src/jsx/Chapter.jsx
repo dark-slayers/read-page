@@ -37,6 +37,8 @@ class Chapter extends React.Component {
     this.state = this.props;
   }
   handleCall = (index) => {
+    localStorage.bookId=this.state.chapter.bookId;
+    localStorage.chapterIndex=index;
     let newURL='/book/chapter/'+this.state.chapter.bookId+'/'+index;
     let self=this;
     $.get(newURL, {}, function(data){
@@ -47,7 +49,7 @@ class Chapter extends React.Component {
     var rawHTML={
            __html:this.state.chapter.content.replace(/\n/g, "<br />")
        };
-    return (      
+    return (
       <div>
         <div>{this.state.chapter.title}</div>
         <div dangerouslySetInnerHTML={rawHTML}></div>
