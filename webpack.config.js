@@ -6,6 +6,7 @@ var config = {
     "/target/test": "./src/entry/test.entry.js",
     "/target/chapter": "./src/entry/chapter.entry.js",
     "/target/search_book": "./src/entry/search_book.entry.js",
+    "/target/title": "./src/entry/title.entry.js",
   },
   output: {
     path: path.resolve(__dirname, './'),
