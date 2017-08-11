@@ -27,7 +27,10 @@ class TitleLine extends React.Component {
 
 class TitlePage extends React.Component {
   render() {
-    const step=3;
+    let step=3;
+    if(this.props.step){
+      step=this.props.step;
+    }
     let list = [];
     for (let i = 0, len = this.props.list.length; i < len; i += step) {
       list.push(this.props.list.slice(i, i + step));
