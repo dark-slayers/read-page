@@ -1,8 +1,8 @@
 import React from 'react';
-import EmptyForm from './base/EmptyForm.jsx';
-import TextInput from './base/TextInput.jsx';
+import EmptyForm from 'react-ui/lib/form/EmptyForm.js';
+import TextInput from 'react-ui/lib/form/TextInput.js';
 import RequestUrl from '../js/RequestUrl.js';
-import PageUtil from '../js/base/PageUtil.js';
+import PageUtil from 'react-ui/lib/base/PageUtil.js';
 import $ from 'jquery';
 class SearchForm extends EmptyForm {
   state = {

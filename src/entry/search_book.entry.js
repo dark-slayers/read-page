@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import DivTitle from '../jsx/DivPageTitle.jsx';
+import DivTitle from 'react-ui/lib/base/PageTitle.js';
 import SearchBook from '../jsx/SearchBook.jsx';
 import $ from 'jquery';
 ReactDOM.render(

@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import DivTitle from 'react-ui/lib/base/PageTitle.js';
+import DivTitle from 'react-ui/lib/base/PageTitle.jsx';
 import Chapter from '../jsx/Chapter.jsx';
 import RequestUrl from '../js/RequestUrl.js';
 import $ from 'jquery';

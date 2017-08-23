@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import DivTitle from '../jsx/DivPageTitle.jsx';
+import DivTitle from 'react-ui/lib/base/PageTitle.js';
 import TitlePage from '../jsx/TitlePage.jsx';
 import $ from 'jquery';
 ReactDOM.render(<DivTitle title = "目录"/> , document.getElementById('page-title'));
