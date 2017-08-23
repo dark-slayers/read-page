@@ -1,9 +1,14 @@
 import React from 'react';
 import $ from 'jquery';
+import PageUtil from 'react-ui/lib/base/PageUtil.js';
 import RequestUrl from '../js/RequestUrl.js';
+
 class ChapterButton extends React.Component {
   handleClick = (index) => {
     this.props.call(index);
+  }
+  handleClickButton = () => {
+    PageUtil.redirect("update_chapter.html");
   }
   render() {
     let divStyle = {
@@ -26,6 +31,9 @@ class ChapterButton extends React.Component {
           <span style={spanStyle}><a href="javascript:;">目录</a></span>
           <span style={spanStyle} onClick={this.handleClick.bind(this, this.props.index + 1)}>
             <a href="javascript:;">下一页</a>
+          </span>
+          <span style={spanStyle} onClick={this.handleClickButton}>
+            <button>修改章节内容</button>
           </span>
         </span>
       </div>
