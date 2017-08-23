@@ -40,7 +40,7 @@ class SearchBook extends React.Component {
   handleClick = () => {
     localStorage.bookId=this.state.bookId;
     localStorage.chapterIndex=0;
-    PageUtil.redirect("chapter.html");
+    PageUtil.redirect("title.html");
   }
   render() {
     return (

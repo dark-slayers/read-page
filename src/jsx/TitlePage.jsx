@@ -1,24 +1,33 @@
 import React from 'react';
-
-class TitleLine extends React.Component {
+import PageUtil from 'react-ui/lib/base/PageUtil.js';
+class TitleSpan extends React.Component {
+  handleClick=()=>{
+    console.log(this.props.title.index+" : "+this.props.title.title);
+    localStorage.chapterIndex=this.props.title.index;
+    PageUtil.redirect("chapter.html");
+  }
   render() {
-    const step=this.props.step;
-    const widthPercent = Math.round(10000 / step ) / 100.0+'%';
-    console.log(widthPercent);
     const spanStyle =
     {
       marginLeft: 10,
       marginRight: 10,
-      width:widthPercent,
+      width:this.props.width,
       textAlign: "center",
     };
+    return (<span style={spanStyle} onClick={this.handleClick}><a href="javascript:;">{this.props.title.title}</a></span>);
+  }
+}
+class TitleLine extends React.Component {
+  render() {
+    const step=this.props.step;
+    const widthPercent = Math.round(10000 / step ) / 100.0+'%';
     const divStyle={display: 'flex'};
     return (
       <div style={divStyle}>
         {
           this.props.titleList.map(function(title)
           {
-            return (<span style={spanStyle}>{title}</span>);
+            return (<TitleSpan title={title} width={widthPercent} />);
           })
         }</div>
     );
@@ -27,13 +36,17 @@ class TitleLine extends React.Component {
 
 class TitlePage extends React.Component {
   render() {
+    let array=[];
+    for (var i = 0; i < this.props.list.length; i++) {
+      array[i]={index:i,title:this.props.list[i]}
+    }
     let step=3;
     if(this.props.step){
       step=this.props.step;
     }
     let list = [];
-    for (let i = 0, len = this.props.list.length; i < len; i += step) {
-      list.push(this.props.list.slice(i, i + step));
+    for (let i = 0, len = array.length; i < len; i += step) {
+      list.push(array.slice(i, i + step));
     }
     return (
       <div>

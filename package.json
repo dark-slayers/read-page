@@ -7,15 +7,19 @@
     "babel-preset-stage-0": "^6.22.0",
     "crypto-js": "^3.1.9-1",
     "css-loader": "^0.25.0",
+    "file-loader": "^0.11.2",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
+    "react-redux": "^5.0.6",
     "react-ui": "github:dark-slayers/react-ui",
+    "redux": "^3.7.2",
     "style-loader": "^0.13.1",
-    "url-loader": "^0.5.7"
+    "url-loader": "^0.5.7",
+    "webpack": "^3.5.5"
   },
-  "name": "mrp-util",
+  "name": "read-page",
   "version": "1.0.0",
-  "description": "项目名称",
+  "description": "阅读系统",
   "main": "index.js",
   "dependencies": {
     "babel-core": "^6.11.4",
@@ -33,5 +37,5 @@
     "start": "copy.bat"
   },
   "author": "刘湘湘",
-  "license": "HYC"
+  "license": "MIT"
 }
