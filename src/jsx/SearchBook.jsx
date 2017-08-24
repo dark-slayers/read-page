@@ -1,8 +1,9 @@
 import React from 'react';
 import EmptyForm from 'react-ui/lib/form/EmptyForm.js';
 import TextInput from 'react-ui/lib/form/TextInput.js';
-import RequestUrl from '../js/RequestUrl.js';
 import PageUtil from 'react-ui/lib/base/PageUtil.js';
+import RequestUrl from '../js/RequestUrl.js';
+import AjaxUtil from '../js/AjaxUtil.js';
 import $ from 'jquery';
 class SearchForm extends EmptyForm {
   state = {
@@ -33,7 +34,7 @@ class SearchBook extends React.Component {
   handleSearch = (bookName) => {
     let url = RequestUrl.bookInfo + '?name=' + bookName;
     let self = this;
-    $.get(url, {}, function(data) {
+    AjaxUtil.get(url, {}, function(data) {
       self.setState({bookName: data.name, bookId: data.id});
     });
   }

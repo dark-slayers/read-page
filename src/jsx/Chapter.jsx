@@ -48,11 +48,7 @@ class Chapter extends React.Component {
   handleCall = (index) => {
     localStorage.bookId=this.state.chapter.bookId;
     localStorage.chapterIndex=index;
-    let newURL=RequestUrl.chapter+this.state.chapter.bookId+'/'+index;
-    let self=this;
-    $.get(newURL, {}, function(data){
-      self.setState({chapter:data});
-    });
+    PageUtil.reload();
   }
   render() {
     var rawHTML={
