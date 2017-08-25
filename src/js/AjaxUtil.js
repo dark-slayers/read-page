@@ -60,7 +60,18 @@ class AjaxUtil {
     });
   }
   static post(url, param, call) {
-    $.post(url, param, call);
+    $.ajax({
+      url: url,
+      type: 'POST',
+      contentType: 'application/json',
+      async: true,
+      data: JSON.stringify(param),
+      timeout: 5000,
+      success: function(data) {
+        AjaxUtil.showErrorIfExist(data);
+        call(data);
+      },
+    });
   }
 }
 
