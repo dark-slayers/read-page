@@ -1,7 +1,7 @@
 <template>
     <div>
         <div v-for="ele in list">
-            <title-line v-bind:list="ele"></title-line>
+            <title-line v-bind:list="ele" v-bind:step="step"></title-line>
         </div>
     </div>
 </template>
