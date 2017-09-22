@@ -1,6 +1,6 @@
 <template>
-  <div class="box">
-    <div id="item">
+  <div v-bind:style="pageStyle">
+    <div>
       <page-title title="添加书籍"></page-title>
       <div>
         <label>书籍名称：<input v-model="name"></label>
@@ -11,7 +11,7 @@
       <div>
         <label>保存类型：<input v-model="type"></label>
       </div>
-      <div class="box">
+      <div v-bind:style="pageStyle">
         <button v-on:click="add">添加</button>
       </div>
     </div>
@@ -26,7 +26,12 @@ import PageTitle from './PageTitle.vue';
 let initData = {
   name: '',
   path: '',
-  type: 'DIR'
+  type: 'DIR',
+  pageStyle: {
+    display: 'flex',
+    justifyContent: 'center',
+    color: '#42b983'
+  }
 };
 export default {
   name: 'book1',
@@ -47,12 +52,5 @@ export default {
 </script>
 
 <style scoped>
-.box {
-  display: flex;
-  justify-content: center;
-}
 
-#item {
-  color: #42b983;
-}
 </style>

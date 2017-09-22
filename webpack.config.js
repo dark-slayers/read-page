@@ -8,6 +8,7 @@ var config = {
         "/target/title": "./src/entry/title.entry.js",
         "/target/update_chapter": "./src/entry/update_chapter.entry.js",
         "/target/add_book": "./src/entry/add_book.entry.js",
+        "/target/book_title": "./src/entry/book_title.entry.js",
     },
     output: {
         path: path.resolve(__dirname, './'),
@@ -50,7 +51,7 @@ var config = {
                             ['stage-0'],
                             ['vue']
                         ],
-                        plugins: ['syntax-dynamic-import']
+                        plugins: ['syntax-dynamic-import', 'transform-vue-jsx']
                     }
                 }]
             },
