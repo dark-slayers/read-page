@@ -16,13 +16,24 @@ class AddBook extends EmptyForm {
     });
   }
   render() {
+    let pageStyle = {
+      display: 'flex',
+      justifyContent: 'center',
+      color: '#42b983'
+    };
+    const lineStyle={
+      marginBottom:10
+    };
     return (
-      <div>
-        <div>Add Book !</div>
-        <div><TextInput obj={this} name="name" label="书籍名称："/></div>
-        <div><TextInput obj={this} name="path" label="书籍路径："/></div>
-        <div><TextInput obj={this} name="type" label="保存类型："/></div>
-        <button onClick={this.handleClick}>添加</button>
+      <div style={pageStyle}>
+        <div>
+          <div style={lineStyle}><TextInput obj={this} name="name" label="书籍名称："/></div>
+          <div style={lineStyle}><TextInput obj={this} name="path" label="书籍路径："/></div>
+          <div style={lineStyle}><TextInput obj={this} name="type" label="保存类型："/></div>
+          <div style={pageStyle}>
+            <button onClick={this.handleClick}>添加</button>
+          </div>
+        </div>
       </div>
     );
   }
