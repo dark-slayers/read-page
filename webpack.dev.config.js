@@ -1,25 +1,7 @@
 var webpack = require("webpack");
 var path = require('path');
-var UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 var config = require('./webpack.base.config.js');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
-config.module.rules[0].use[0].options.plugins.push('transform-remove-console');
-config.plugins.push(new UglifyJSPlugin({
-  uglifyOptions: {
-    ie8: false,
-    output: {
-      comments: false,
-      beautify: false,
-    },
-    mangle: {
-      keep_fnames: true
-    },
-    compress: {
-      warnings: false,
-      drop_console: true
-    },
-  }
-}));
 const entrys = {
   'add-book': '添加书籍',
   'chapter': '章节',
