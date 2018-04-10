@@ -1,6 +1,6 @@
 const RequestUrl={
   chapter:function(bookId,chapterIndex){
-    return `book/${bookId}/chapter/${chapterIndex}`;
+    return `/book/${bookId}/chapter/${chapterIndex}`;
   },
   bookInfo:'/book/info',
   titles:'/book/titles/',
