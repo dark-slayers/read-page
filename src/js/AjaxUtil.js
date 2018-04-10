@@ -1,81 +1,44 @@
-import $ from 'jquery';
 class AjaxUtil {
-  static showErrorIfExist(data) {
-    let reponse = data;
-    let type = Object.prototype.toString.call(data);
-    if ("[object Object]" !== type) {
-      reponse = JSON.parse(data);
-    }
-    const isError = (reponse.errorResponse && reponse.message != null);
-    if (isError) {
-      alert(reponse.message);
-    }
-    return isError;
+  static get(url, callSuccess) {
+    fetch(url).then(response => response.json()).then((json) => {
+      if (json.errorResponse) {
+        alert(json.message);
+      } else {
+        callSuccess(json);
+      }
+    }).catch(e => console.log("Oops, error", e));;
   }
-  static ajax(url, methed, data, callSuccess, callError) {
-    $.ajax({
-      url: url,
-      type: methed,
-      async: true,
-      data: data,
-      timeout: 5000,
-      // beforeSend: function(xhr) {
-      //   console.log(xhr)
-      //   console.log('发送前')
-      // },
-      success: callSuccess,
-      error: callError,
-      // complete: function() {
-      //   console.log('结束')
-      // }
-    });
+  static post(url, data, callSuccess) {
+    var myRequest = this.createRequest('POST',url,data);
+    this.f(myRequest,callSuccess);
   }
-  static patch(url, data, callSuccess, callError) {
-    $.ajax({
-      url: url,
-      type: 'PATCH',
-      contentType: 'application/json',
-      async: true,
-      data: JSON.stringify(data),
-      timeout: 5000,
-      success: callSuccess,
-      error: callError,
-    });
+  static put(url, data, callSuccess) {
+    var myRequest = this.createRequest('PUT',url,data);
+    this.f(myRequest,callSuccess);
   }
   static delete(url, data, callSuccess) {
-    $.ajax({
-      url: url,
-      type: 'DELETE',
-      async: true,
-      data: data,
-      timeout: 5000,
-      success: callSuccess,
-      error: function(data, xhr, textStatus) {
-        alert(RequestUtil.getErrorMessage(data));
+    var myRequest = this.createRequest('DELETE',url,data);
+    this.f(myRequest,callSuccess);
+  }
+  static f(myRequest,callSuccess){
+    fetch(myRequest).then(response => response.json()).then((json) => {
+      if (json.errorResponse) {
+        alert(json.message);
+      } else {
+        callSuccess(json);
       }
     });
   }
-  static get(url, param, call) {
-    $.get(url, param, function(data) {
-      if (!AjaxUtil.showErrorIfExist(data)) {
-        call(data);
-      }
-    });
-  }
-  static post(url, param, call) {
-    $.ajax({
-      url: url,
-      type: 'POST',
-      contentType: 'application/json',
-      async: true,
-      data: JSON.stringify(param),
-      timeout: 5000,
-      success: function(data) {
-        if (!AjaxUtil.showErrorIfExist(data)) {
-          call(data);
-        }
-      },
-    });
+  static createRequest(method,url,data){
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    var myInit = {
+      method: method,
+      headers: myHeaders,
+      cache: 'default',
+      body: JSON.stringify(data)
+    };
+    return new Request(url, myInit);
   }
 }
 
