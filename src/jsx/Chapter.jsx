@@ -7,6 +7,9 @@ class ChapterButton extends React.Component {
   handleClick = (index) => {
     localStorage.bookId = this.props.bookId;
     localStorage.chapterIndex = index;
+    console.debug(">>>>>>>>"+JSON.stringify(this.props));
+    console.debug(">>>>>>>>"+localStorage.bookId);
+    console.debug(">>>>>>>>"+localStorage.chapterIndex);
     PageUtil.reload();
   }
   handleClickTitle = () => {
@@ -78,6 +81,7 @@ class Chapter extends React.Component {
     var rawHTML = {
       __html: this.props.chapter.content.replace(/\n/g, "<br />")
     };
+    console.debug(JSON.stringify(this.props));
     return (
       <div>
         <div>{this.props.chapter.title}</div>
