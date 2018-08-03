@@ -1,6 +1,6 @@
 var webpack = require("webpack");
 var path = require('path');
-
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 var config = {
   entry: {
@@ -31,9 +31,7 @@ var config = {
             ['env', {
               modules: false,
               "targets": {
-                "browsers": ["Chrome >= 60", "Firefox >= 55",
-                  "ie >= 9"
-                ]
+                "browsers": ["Chrome >= 60", "Firefox >= 55","ie >= 9"]
               }
             }],
             ['stage-0'],
@@ -57,6 +55,5 @@ var config = {
     }]
   }
 }
-
 
 module.exports = config;
