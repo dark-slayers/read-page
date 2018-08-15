@@ -34,7 +34,7 @@ class SearchBook extends React.Component {
   handleSearch = (bookName) => {
     let url = RequestUrl.bookInfo + '?name=' + bookName;
     let self = this;
-    AjaxUtil.get(url, {}, function(data) {
+    AjaxUtil.get(url,function(data) {
       self.setState({bookName: data.name, bookId: data.id});
     });
   }
